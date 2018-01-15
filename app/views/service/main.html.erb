@@ -1,0 +1,27 @@
+<p><%= current_user.email %>의 페이지</p>
+
+<div class="gridster">
+    <ul>
+        <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">11</li>
+        <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">21</li>
+        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">31</li>
+        <li data-row="4" data-col="1" data-sizex="2" data-sizey="1">41</li>
+        
+        <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">12</li>
+        <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">22</li>
+        <li data-row="3" data-col="3" data-sizex="1" data-sizey="1">32</li>
+        <li data-row="4" data-col="3" data-sizex="1" data-sizey="1">42</li>
+    </ul>
+</div>
+
+<script>
+$(function(){ //DOM Ready
+
+    $(".gridster ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [140, 140]
+    });
+});
+
+
+</script>
