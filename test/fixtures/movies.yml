@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  music: MyString
+  stock: MyString
+  fortune: MyString
+  wise_saying: MyString
+
+two:
+  music: MyString
+  stock: MyString
+  fortune: MyString
+  wise_saying: MyString

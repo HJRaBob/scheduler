@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock: MyString
+  fortune: MyString
+  wise_saying: MyString
+
+two:
+  stock: MyString
+  fortune: MyString
+  wise_saying: MyString

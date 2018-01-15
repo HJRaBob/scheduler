@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  root "posts#index"
-  post 'users/:id/main' => 'users#main'
+  authenticated :user do
+    root to: 'service#main', as: :authenticated_root
+  end
 
+  root "posts#index"
+  
   devise_for :users
   resources :posts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -26,6 +26,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :services_position
       t.text :last_month_grade
 
+      #service information
+      t.string :location
+      t.string :music_site
+      t.string :stock_event
+      t.string :birthday
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
