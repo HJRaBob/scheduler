@@ -1,0 +1,34 @@
+<%
+y=1936
+#y=User.get(id).fortune_year
+ta=["원숭이띠","닭띠","개띠","돼지띠","쥐띠","소띠","호랑이띠","토끼띠","용띠","뱀띠","말띠","양띠"]
+t = ta[y%12]
+
+url = URI.encode("https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&query="+t+" 운세")
+      luck_html = RestClient.get(url)
+doc = Nokogiri::HTML(luck_html)
+luck=Hash.new
+k=Array.new
+v=Array.new
+ for i in (0..4)
+    k << doc.css('dl.lst_infor._cs_fortune_list dt')[i].text.strip[0..3]
+    v << doc.css('dl.lst_infor._cs_fortune_list dd')[i].text.strip
+  end
+
+luck[doc.css('li.first_lst a').text]={:today => doc.css('p.text._cs_fortune_text')[0].text.strip,
+  :url =>doc.css('div.infors div.thumb img').attribute('src').to_s,
+   k[0] => v[0],  k[1] => v[1],  k[2] => v[2],  k[3] => v[3], k[4] => v[4]}
+p luck[t][:today]
+for i in (0..4)
+p y.to_s+"년생"
+p luck[t][y.to_s]
+end
+
+%>
+<%=t%>
+
+ <img src="<%=luck[t][:url]%>" height="50" width="50">
+ <br />
+ <%=luck[t][:today]%><br />
+ <h5><b><%=y%> 년생</b><font size="2"> 운세
+ <%=luck[t][y.to_s]%></font></h5>
