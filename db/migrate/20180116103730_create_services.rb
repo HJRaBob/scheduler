@@ -10,6 +10,8 @@ class CreateServices < ActiveRecord::Migration
       t.integer :size_x
       t.integer :size_y
 
+      t.integer :id_service
+
       t.timestamps null: false
     end
   end
