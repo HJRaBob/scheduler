@@ -1,27 +1,40 @@
 <p><%= current_user.email %>의 페이지</p>
-
+<a href="/users/sign_out" data-method = "delete">로그아웃</a>
 <div class="gridster">
     <ul>
-        <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">11</li>
-        <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">21</li>
-        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">31</li>
-        <li data-row="4" data-col="1" data-sizex="2" data-sizey="1">41</li>
-        
-        <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">12</li>
-        <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">22</li>
-        <li data-row="3" data-col="3" data-sizex="1" data-sizey="1">32</li>
-        <li data-row="4" data-col="3" data-sizex="1" data-sizey="1">42</li>
     </ul>
 </div>
 
+<button class = "status"> 배치 저장 </button>
+
 <script>
 $(function(){ //DOM Ready
+    var gridster;
+    var position;
+    var position_x = new Array();
+    var position_y = new Array();
 
-    $(".gridster ul").gridster({
+    gridster = $(".gridster ul").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [280, 280]
+    }).data('gridster');
+
+    <% @service.each do |service|%>
+        gridster.add_widget('<li class="new"><%= service.sequence %></li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% if service.sequence>@user.service_number %>
+            <% break %>
+        <% end %>
+    <% end %>
+
+    $('.status').on('click',function(){
+        position =gridster.serialize();
+        $.ajax({
+            url: "/service/<%=current_user.id%>/allocate",
+            method: "POST",
+            data: {
+                position: position
+            }
+        });
     });
 });
-
-
 </script>

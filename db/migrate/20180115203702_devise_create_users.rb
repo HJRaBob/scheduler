@@ -27,6 +27,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :music_site
       t.string  :stock_event
       t.integer :fortune_year
+      t.integer :service_number
       
       ## Confirmable
       # t.string   :confirmation_token

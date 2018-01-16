@@ -4,7 +4,7 @@ class CreateServices < ActiveRecord::Migration
       t.integer :user_id
       
       #gridster
-      t.integer :order
+      t.integer :sequence
       t.integer :position_x
       t.integer :position_y
       t.integer :size_x

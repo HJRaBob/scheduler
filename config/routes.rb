@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   end
   
   root "posts#index"
+
+  post '/service/:id/allocate' => 'service#allocate'
   
   devise_for :users
   resources :posts
