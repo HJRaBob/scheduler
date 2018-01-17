@@ -1,5 +1,6 @@
 <h1>Movie</h1>
 <%
+
 url = "http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve"
 movie_html = RestClient.get(url)
 doc = Nokogiri::HTML(movie_html)
