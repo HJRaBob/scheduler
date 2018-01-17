@@ -1,5 +1,6 @@
 <p><%= current_user.email %>의 페이지</p>
 <a href="/users/sign_out" data-method = "delete">로그아웃</a>
+<a href="/service/<%=current_user.id%>/setting">설정</a>
 <div class="gridster">
     <ul>
     </ul>

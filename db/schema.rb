@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180116103730) do
     t.integer  "position_y"
     t.integer  "size_x"
     t.integer  "size_y"
+    t.integer  "id_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

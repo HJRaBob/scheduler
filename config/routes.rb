@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   
   root "posts#index"
 
+  get '/service/:id/setting' => 'service#setting'
+  post '/service/:id/save' => 'service#save'
   post '/service/:id/allocate' => 'service#allocate'
+
+
   
   devise_for :users
   resources :posts
