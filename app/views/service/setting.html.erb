@@ -1,0 +1,55 @@
+<form action="/service/<%=@user.id%>/save" method="post">
+    <h3>위젯 설정</h3>
+    <label>사용 위젯 개수: </label>
+    <select name = "service_number">
+    <% 8.times do |i| %>
+        <option value=<%=i+1%> <%= 'selected' if i+1 == @user.service_number %>><%= i+1 %></option>
+    <% end %>
+    </select>
+    <br>
+    <br>
+    <% 8.times do |i| %>
+        <label><%= i+1 %>번 위젯: </label>
+        <select name = "widget_<%=i+1%>">
+            <option value=<%=0%> <%= 'selected' if @service[i].id_service == 0 %>>날씨</option>
+            <option value=<%=1%> <%= 'selected' if @service[i].id_service == 1 %>>영화</option>
+            <option value=<%=2%> <%= 'selected' if @service[i].id_service == 2 %>>음악</option>
+            <option value=<%=3%> <%= 'selected' if @service[i].id_service == 3 %>>주가</option>
+            <option value=<%=4%> <%= 'selected' if @service[i].id_service == 4 %>>운세</option>
+            <option value=<%=5%> <%= 'selected' if @service[i].id_service == 5 %>>명언</option>
+        </select>
+    <% end %>
+
+    <hr>
+    <h3>날씨 정보</h3>
+
+    <hr>
+    <h3>음악 정보</h3>
+    <label>음원 사이트</label>
+    <select name = "music_site">
+        <option value="Melon" <%= 'selected' if "Melon" == @user.music_site %>>Melon</option>
+        <option value="Bugs" <%= 'selected' if "Bugs" == @user.music_site %>>Bugs</option>
+        <option value="Genie" <%= 'selected' if "Genie" == @user.music_site %>>Genie</option>
+    </select>
+
+    <hr>
+    <h3>주식 정보</h3>
+    <label>종목 설정</label>
+    <select name = "stock_event">
+        <option value="kospi" <%= 'selected' if "kospi" == @user.stock_event %>>KOSPI</option>
+        <option value="kosdaq" <%= 'selected' if "kosdaq" == @user.stock_event %>>KOSDAQ</option>
+        <option value="kospi200" <%= 'selected' if "kospi200" == @user.stock_event %>>KOSPI200</option>
+    </select>
+
+    <hr>
+    <h3>운세 정보</h3>
+    <label>생년: </label>
+    <select name = "fortune_year">
+    <% 1900.upto(2018) do |i| %>
+        <option value=<%=i%> <%= 'selected' if i == @user.fortune_year %>><%= i %></option>
+    <% end %>
+
+    <input type="hidden" name="authenticity_token" value= "<%=form_authenticity_token%>">
+    <hr>
+    <input type="submit" value="제출">
+</form>
