@@ -1,10 +1,7 @@
-<h1>Music</h1>
+<h2>Music</h2>
 
 <%
-
-
   site=@user.music_site
-
   if site=="Melon"
     # melon
       url = "http://www.melon.com/chart/index.htm"
@@ -19,11 +16,11 @@
         mi << music.css('div.wrap a.image_typeAll img').attribute('src').to_s
     end
     %>
-      <h2>melon</h2><hr />
+      <h3>melon</h3><hr />
       <%for i in (0..2)%>
         <%=mu[i]%>
-        <img src="<%=mi[i]%>"height="50" width="50"><br /><hr />
-      <%end%>
+        <img src="<%=mi[i]%>"height="50" width="50"><br/>
+      <%end%><hr />
 
   <%
     elsif site=="Bugs"
@@ -37,10 +34,10 @@
         mu2 << music2.css('div.ranking strong').text.strip+ "위: " + music2.css('p.title a').text.strip + "  - " + music2.css('p.artist a').text.strip
         mi2 << music2.css('a.thumbnail img').attribute('src').to_s
       end%>
-      <h2>genie</h2><hr />
+      <h3>genie</h3><hr />
       <%for i in (0..2)%>
         <%=mu2[i]%>
-        <img src="<%=mi2[i]%>"height="50" width="50"><br /><hr />
+        <img src="<%=mi2[i]%>"height="50" width="50"><hr />
       <%end%>
 
   <% elsif site=="Genie"
@@ -54,9 +51,9 @@
         mu3 << music3.css('td.number').text.strip[0]+ "위: " + music3.css('td.info a.title.ellipsis').text.strip + "  - " + music3.css('td.info a.artist.ellipsis').text.strip
         mi3 << music3.css('a.cover img').attribute('src').to_s
       end%>
-        <h2>bugs</h2>><hr />
+        <h3>bugs</h3>><hr />
         <%for i in (0..2)%>
           <%=mu3[i]%>
-          <img src="<%=mi3[i]%>" height="50" width="50"><br /><hr />
+          <img src="<%=mi3[i]%>" height="50" width="50"><hr />
         <%end%>>
     <%end%>

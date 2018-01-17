@@ -1,6 +1,5 @@
 <h1>Movie</h1>
 <%
-
 url = "http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve"
 movie_html = RestClient.get(url)
 doc = Nokogiri::HTML(movie_html)
@@ -24,6 +23,6 @@ end
 %>
 
 <%for i in (0..2)%>
-<img src="<%=img_url[i]%>">
+<img src="<%=img_url[i]%>" height="100" width="70">
   <%=mrank[i]%><br /><hr />
   <%end%>
