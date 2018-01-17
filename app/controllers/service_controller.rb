@@ -1,9 +1,11 @@
 class ServiceController < ApplicationController
     before_action :authenticate_user!
-    
+
     def main
         @user = current_user
         @service = Service.where(:user_id => current_user.id).order("sequence ASC")
+        @post = Post.new
+        @posts = Post.all
     end
 
     def setting
@@ -18,7 +20,7 @@ class ServiceController < ApplicationController
             :music_site => params[:music_site],
             :fortune_year => params[:fortune_year]
         )
-        
+
         services = Service.where(:user_id => current_user.id).order("sequence ASC")
         8.times do |i|
             services[i].update(:id_service => params[:"widget_#{i+1}"])

@@ -2,15 +2,17 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'service#main', as: :authenticated_root
   end
-  
+
   root "posts#index"
 
   get '/service/:id/setting' => 'service#setting'
   post '/service/:id/save' => 'service#save'
   post '/service/:id/allocate' => 'service#allocate'
+  post '/service/main' => 'service#main'
+  get '/service/main' => 'service#main'
 
 
-  
+
   devise_for :users
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
