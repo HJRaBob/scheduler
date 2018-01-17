@@ -19,7 +19,20 @@ $(function(){ //DOM Ready
     }).data('gridster');
 
     <% @service.each do |service|%>
-        gridster.add_widget('<li class="new"><%= service.sequence %></li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% if service.id_service == 0 %>
+            gridster.add_widget('<li class="new">  <%="#{render 'service/weather'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);        
+        <% elsif service.id_service == 1 %>
+            gridster.add_widget('<li class="new">  <%="#{render 'service/movie'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% elsif service.id_service == 2 %>
+            gridster.add_widget('<li class="new">  <%="#{render 'service/music'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% elsif service.id_service == 3 %>
+            gridster.add_widget('<li class="new">  <%="#{'주식'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% elsif service.id_service == 4 %>
+            gridster.add_widget('<li class="new">  <%="#{render 'service/luck'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% elsif service.id_service == 5 %>
+            gridster.add_widget('<li class="new">  <%="#{render 'service/wise'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+        <% end %>
+
         <% if service.sequence>@user.service_number %>
             <% break %>
         <% end %>
