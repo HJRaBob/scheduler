@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<h1>
 <a href="/users/sign_up">회원가입</a>
 <a href="/users/sign_in">로그인</a>
+</h1>
+
 <div class="gridster">
     <ul>
 
-        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"><%= render 'service/movie' %></li>
-        <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"><%= render 'service/music' %></li>
-        <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"><%= render 'service/luck' %></li>
+        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"><h3>영화 순위</h3></li>
+        <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"><h3>음악 순위</h3></li>
+        <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"><h3>주식</h3></li>
 
-        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1"><%= render 'service/weather' %></li>
-        <li data-row="2" data-col="2" data-sizex="2" data-sizey="2"><%= render 'service/wise' %></li>
+        <li data-row="1" data-col="2" data-sizex="1" data-sizey="1"><h3>오늘의 날씨</h3></li>
+        <li data-row="2" data-col="2" data-sizex="1" data-sizey="1"><h3>오늘의 명언</h3></li>
 
-        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>
-        <li data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>
+        <li data-row="3" data-col="2" data-sizex="1" data-sizey="1"><h3>오늘의 운세</h3></li>
+        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"><h3>스케쥴러?</h3></li>
         <li data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>
 
         <li data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>

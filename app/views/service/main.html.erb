@@ -2,6 +2,18 @@
 <a href="/users/sign_out" data-method = "delete">로그아웃</a>
 <a href="/service/<%=current_user.id%>/setting">설정</a>
 <div class="gridster">
+  <%=render '/posts/new'%>
+
+  <%@posts.each do |p|%>
+    <div class="form-check">
+    <input class="form-check-input" type="checkbox" >
+    <label class="form-check-label">
+      <b>할 일: </b><%=p.title%>
+      <b>내용: </b><%=p.content%>
+    </label>
+    </div>
+    <hr/>
+  <%end%>
     <ul>
     </ul>
 </div>
@@ -20,7 +32,7 @@ $(function(){ //DOM Ready
 
     <% @service.each do |service|%>
         <% if service.id_service == 0 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/weather'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);        
+            gridster.add_widget('<li class="new">  <%="#{render 'service/weather'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 1 %>
             gridster.add_widget('<li class="new">  <%="#{render 'service/movie'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 2 %>
