@@ -1,5 +1,6 @@
 <%
-url = "https://search.daum.net/search?w=tot&DA=Z8T&q=%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%82%A0%EC%94%A8&rtmaxcoll=Z8T"
+location="경기도 광명시"
+url = URI.encode("https://search.daum.net/search?w=tot&DA=Z8T&q="+location+" 날씨&rtmaxcoll=Z8T")
 weather_html = RestClient.get(url)
 doc = Nokogiri::HTML(weather_html)
 weather=Array.new
@@ -16,6 +17,7 @@ end
 %>
 
 <hr />
+<h3><%=location%> 날씨</h3>
 <% for i in (0..7)%>
       <%=weather_return[i]%><br />
     <%end%>

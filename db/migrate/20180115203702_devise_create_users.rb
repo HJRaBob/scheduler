@@ -27,8 +27,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :music_site
       t.string  :stock_event
       t.integer :fortune_year
-      t.integer :service_number
-      
+      t.integer :service_number #서비스 개수 
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
