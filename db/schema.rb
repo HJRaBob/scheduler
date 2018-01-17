@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180116103730) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "location"
+    t.string   "location"
     t.string   "music_site"
     t.string   "stock_event"
     t.integer  "fortune_year"
