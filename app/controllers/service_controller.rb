@@ -13,6 +13,7 @@ class ServiceController < ApplicationController
 
     def save
         User.find(current_user.id).update(
+            :location => params[:location],
             :service_number => params[:service_number],
             :music_site => params[:music_site],
             :fortune_year => params[:fortune_year]

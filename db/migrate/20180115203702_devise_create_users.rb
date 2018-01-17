@@ -23,7 +23,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
 
       ##service
-      t.integer :location
+      t.string :location
       t.string  :music_site
       t.string  :stock_event
       t.integer :fortune_year
