@@ -40,52 +40,20 @@
       end
     end
     if cnt==-1
-      @alarm = "해당하는 종목이 없습니다."
+      @stockcode = "해당하는 종목이 없습니다."
       puts "해당하는 종목이 없습니다."
     end
-
-    # arr.each do |i|
-    #   puts i.xpath("//korSecnNm").inner_text
-    #   if i.xpath("//korSecnNm").inner_text == @keyword
-    #       @code = i.xpath("//shotnIsin").inner_text
-    #       puts @code
-    #   else
-    #       puts "해당하는 종목이 없습니다."
-    #   end
-    #   # puts i.inner_text
-    #   # if i.inner_text==@keyword
-    #     # @
-    # end
-
-    # if @stock == korSecnNm
-    #   @stockcode = @stockstockInfo.xpath("//item//shotnIsin").text
-    #   @stockcode = @stocks.xpath("//item//shotnIsin").text
-
-    # puts @stockcode
-
 
     #4.주가정보 획득
     #크롤러 사용 - 다음 주식정보
     stock_url = URI.encode("http://finance.daum.net/item/news.daum?code=" + @stockcode.to_s)
     @response = RestClient.get(stock_url)
-    #@weather_info = Nokogiri::XML(response_weather)
-    #puts @response
     doc= Nokogiri::HTML(@response)
     @cost = doc.css("em.curPrice").text
     puts @cost
-#       url = "https://ko.wikipedia.org/wiki/#{keyword}dddd"
-#               response = RestClient.get(URI.encode(url))
-#               doc = Nokogiri::HTML(response)
-#               elementType = doc.css("table.infobox").children[9].text.strip.split[2]
-#               bot_message = elementType
-# topWrap > div.topInfo > ul.list_stockrate > li:nth-child(1) > em
-    # @fcstDate = @doc2.xpath("//item//fcstDate")
-    #//*[@id="topWrap"]/div[1]/ul[2]/li[1]/em
-    # @weather_info = Nokogiri::Slop <<-EOXML
-    #   #{stockInfo}
-    # EOXML
-    # # puts @weather_info.response.body.items
-    # arr = @weather_info.response.body.items.item #array 선언 후 하나씩 검색
-    # @Water = Array.new()
-    # @Sky = Array.new()
 %>
+    <div class = "container">
+      <h3 class="jg"><%=@keyword%>의 주가</h3><br />
+      <span class="hn"><font size="3"><%=@stockcode%></font></span><br />
+      <span class="hn"><font size="6"><%=@cost%></font></span><br />
+    </div>
