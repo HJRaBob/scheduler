@@ -17,6 +17,30 @@
             <option value=<%=3%> <%= 'selected' if @service[i].id_service == 3 %>>주가</option>
             <option value=<%=4%> <%= 'selected' if @service[i].id_service == 4 %>>운세</option>
             <option value=<%=5%> <%= 'selected' if @service[i].id_service == 5 %>>명언</option>
+            <option value=<%=6%> <%= 'selected' if @service[i].id_service == 5 %>>할일</option>
+        </select>
+    <% end %>
+    <br><br>
+    <h4>위젯 크기</h4>
+    <h5>가로 크기</h5>
+    <% 8.times do |i| %>
+        <label><%= i+1 %>번 위젯: </label>
+        <select name = "sizex_<%=i+1%>">
+            <option value=<%=1%> <%= 'selected' if @service[i].size_x == 1 %>>1</option>
+            <option value=<%=2%> <%= 'selected' if @service[i].size_x == 2 %>>2</option>
+            <option value=<%=3%> <%= 'selected' if @service[i].size_x == 3 %>>3</option>
+            <option value=<%=4%> <%= 'selected' if @service[i].size_x == 4 %>>4</option>
+        </select>
+    <% end %>
+
+    <h5>세로 크기</h5>
+    <% 8.times do |i| %>
+        <label><%= i+1 %>번 위젯: </label>
+        <select name = "sizey_<%=i+1%>">
+            <option value=<%=1%> <%= 'selected' if @service[i].size_y == 1 %>>1</option>
+            <option value=<%=2%> <%= 'selected' if @service[i].size_y == 2 %>>2</option>
+            <option value=<%=3%> <%= 'selected' if @service[i].size_y == 3 %>>3</option>
+            <option value=<%=4%> <%= 'selected' if @service[i].size_y == 4 %>>4</option>
         </select>
     <% end %>
 

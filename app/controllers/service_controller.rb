@@ -23,9 +23,12 @@ class ServiceController < ApplicationController
 
         services = Service.where(:user_id => current_user.id).order("sequence ASC")
         8.times do |i|
-            services[i].update(:id_service => params[:"widget_#{i+1}"])
+            services[i].update(
+                :id_service => params[:"widget_#{i+1}"],
+                :size_x => params[:"sizex_#{i+1}"],
+                :size_y => params[:"sizey_#{i+1}"]
+            )
         end
-
 
         redirect_to "/"
     end

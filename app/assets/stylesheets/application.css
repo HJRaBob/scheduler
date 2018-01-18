@@ -14,3 +14,11 @@
  *= require_self
  *= require jquery.gridster
  */
+
+ .gridster li {
+    overflow: hidden;
+ }
+
+.gridster li:hover { 
+    overflow: scroll; 
+}
