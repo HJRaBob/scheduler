@@ -1,7 +1,7 @@
 <form action="/service/<%=@user.id%>/save" method="post">
     <h3>위젯 설정</h3>
     <label>사용 위젯 개수: </label>
-    <select name = "service_number">
+    <select name = "service_number" class = "custom-select mr-sm-2">
     <% 8.times do |i| %>
         <option value=<%=i+1%> <%= 'selected' if i+1 == @user.service_number %>><%= i+1 %></option>
     <% end %>
@@ -59,11 +59,7 @@
     <hr>
     <h3>주식 정보</h3>
     <label>종목 설정</label>
-    <select name = "stock_event">
-        <option value="kospi" <%= 'selected' if "kospi" == @user.stock_event %>>KOSPI</option>
-        <option value="kosdaq" <%= 'selected' if "kosdaq" == @user.stock_event %>>KOSDAQ</option>
-        <option value="kospi200" <%= 'selected' if "kospi200" == @user.stock_event %>>KOSPI200</option>
-    </select>
+    <input type="text" name="stock_event" value = <%= @user.stock_event %>>
 
     <hr>
     <h3>운세 정보</h3>

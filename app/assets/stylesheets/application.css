@@ -15,33 +15,9 @@
  *= require jquery.gridster
  */
 
-@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
-@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
-@import url(//fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
-@import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-.hn { font-family: 'Hanna'; font-size: 20px;}
-.jg { font-family: 'Jeju Gothic'; font-size: 45px;}
-.jh { font-family: 'Jeju Hallasan'; font-size: 40px;}
-.jm { font-family: 'Jeju Myeongjo'; font-size: 20px;}
-.kb { font-family: 'Kopub Batang'; font-size: 20px;}
-.nbs { font-family: 'Nanum Brush Script'; font-size: 20px;}
-.ng { font-family: 'Nanum Gothic'; font-size: 20px;}
-.nm { font-family: 'Nanum Myeongjo'; font-size: 20px;}
-.ngc { font-family: 'Nanum Gothic Coding'; font-size: 20px;}
-.nps { font-family: 'Nanum Pen Script'; font-size: 20px;}
-.ns { font-family: 'Noto Sans KR'; font-size: 50px;}
-
-body {
-    font-family: 'Hanna';
-}
-
+ .custom-select {
+     width: 5%;
+ }
  textarea {
     width: 100%;
     height: 150px;
