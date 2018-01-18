@@ -7,7 +7,6 @@
 </div>
 <br>
 <div class="gridster">
-
     <ul>
     </ul>
 </div>
@@ -32,19 +31,20 @@ $(function(){ //DOM Ready
 
     <% @service.each do |service|%>
         <% if service.id_service == 0 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/weather'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new"> <div style="float:right" class="hn"><%=service.id_service+1%></div> <%="#{render 'service/weather'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 1 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/movie'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new"> <div style="float:right" class="hn"><%=service.id_service+1%></div> <%="#{render 'service/movie'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 2 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/music'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new">  <div style="float:right" class="hn"><%=service.id_service+1%></div><%="#{render 'service/music'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 3 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/stockInfo'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new"> <div style="float:right" class="hn"><%=service.id_service+1%></div> <%="#{render 'service/stockInfo'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 4 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/luck'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new"><div style="float:right" class="hn"><%=service.id_service+1%></div> <%="#{render 'service/luck'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 5 %>
-            gridster.add_widget('<li class="new">  <%="#{render 'service/wise'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new"> <div style="float:right" class="hn"><%=service.id_service+1%></div><%="#{render 'service/wise'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 6 %>
-           gridster.add_widget('<li class="new container"><%@posts.each do |p|%><div id= <%=p.id.to_s %> class="custom-control custom-checkbox "> <input type="checkbox" class="custom-control-input" id=<%="customCheck"+p.id.to_s%> /> <label class="custom-control-label" for=<%="customCheck"+p.id.to_s%>><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label>     <a href="/destroy/<%=p.id%>" class=" w-10 h-25 btn btn-outline-danger btn-sm" data-confirm="Are you sure?<%=p.id%>" data-method="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span><strong>Del</strong></span></a><button class="w-20 h-25 btn btn-outline-primary btn-sm "onclick="myFunction(<%=p.id%>)">Done</button></div><%end%> <%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%></li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+
+           gridster.add_widget(' <li class="new container"><div style="float:right" class="hn"><%=service.id_service+1%></div><h3 class="jg">To Do</h3><%@posts.each do |p|%><div id= <%=p.id.to_s %> class="custom-control custom-checkbox hn"> <input type="checkbox" class="custom-control-input" id=<%="customCheck"+p.id.to_s%> /> <label class="custom-control-label" for=<%="customCheck"+p.id.to_s%>> <font size="4"><b>할 일: </b><%=p.title%><br> <b> 내용: </b><%=p.content%></font></label><div align="right"><a href="/destroy/<%=p.id%>" class=" w-5 h-10 btn btn-outline-danger btn-sm" data-confirm="Are you sure?<%=p.id%>" data-method="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span><strong><font size="2">Del</font></strong></span></a><button class="w-8 h-15 btn btn-outline-primary btn-sm "onclick="myFunction(<%=p.id%>)"><font size="2">Done</font></button></div></div><%end%> <%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%></li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
 
         <% end %>
           <% if service.sequence>@user.service_number-1 %>
