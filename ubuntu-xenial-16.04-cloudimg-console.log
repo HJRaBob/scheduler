@@ -655,3 +655,37 @@ ubuntu-xenial login: [20222.914839] e1000 0000:00:03.0 enp0s3: Detected Tx Unit 
 [20226.922776]   jiffies              <1004bfdf7>
 [20226.922776]   next_to_watch.status <0>
 [20227.883593] e1000 0000:00:03.0 enp0s3: Reset adapter
+[38893.431749] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[38893.431749]   Tx Queue             <0>
+[38893.431749]   TDH                  <30>
+[38893.431749]   TDT                  <32>
+[38893.431749]   next_to_use          <32>
+[38893.431749]   next_to_clean        <30>
+[38893.431749] buffer_info[next_to_clean]
+[38893.431749]   time_stamp           <1009330f0>
+[38893.431749]   next_to_watch        <31>
+[38893.431749]   jiffies              <1009332fb>
+[38893.431749]   next_to_watch.status <0>
+[38895.719995] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[38895.719995]   Tx Queue             <0>
+[38895.719995]   TDH                  <30>
+[38895.719995]   TDT                  <32>
+[38895.719995]   next_to_use          <32>
+[38895.719995]   next_to_clean        <30>
+[38895.719995] buffer_info[next_to_clean]
+[38895.719995]   time_stamp           <1009330f0>
+[38895.719995]   next_to_watch        <31>
+[38895.719995]   jiffies              <100933537>
+[38895.719995]   next_to_watch.status <0>
+[38897.804230] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[38897.804230]   Tx Queue             <0>
+[38897.804230]   TDH                  <30>
+[38897.804230]   TDT                  <32>
+[38897.804230]   next_to_use          <32>
+[38897.804230]   next_to_clean        <30>
+[38897.804230] buffer_info[next_to_clean]
+[38897.804230]   time_stamp           <1009330f0>
+[38897.804230]   next_to_watch        <31>
+[38897.804230]   jiffies              <100933740>
+[38897.804230]   next_to_watch.status <0>
+[38899.867425] e1000 0000:00:03.0 enp0s3: Reset adapter

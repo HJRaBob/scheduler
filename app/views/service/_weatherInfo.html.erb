@@ -1,18 +1,4 @@
 <%
-  #1.행정구역정보
-  #csv에서 db생성 - 한번만
-    # filename = Rails.root.join('address.csv')
-    # CSV.foreach(filename) do |row|
-    #    puts row[0..2].join
-    #    puts row[3]
-    #    puts row[4]
-    #    @address = row[0..2].join
-    #    @xPoint = row[3].to_i
-    #    @yPoint = row[4].to_i
-    #    Address.create(address: @address, nx: @xPoint, ny: @yPoint) #단수로
-    #
-    #    # use row here...
-    # end
   @keyword=params[:keyword]
   #Foo.where("bar ILIKE ?", "%#{query}%")
   #MyModel.where(["title LIKE ?", "%#{params[:query]}%"])
@@ -24,12 +10,12 @@
 
   #2.해당구역기상정보
   key = "rpPNq6qHiRzGIWy5TseuMtDGujDtmv2mkajUVifmHD0Sp%2Bo54J8uyJUzbC1t83MJUVC22Q8SSASrDGUdRIcN4w%3D%3D"
-  @todayDate=20180117.to_s
+  @todayDate=20180118.to_s
   weather_url = URI.encode("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?base_date=#{@todayDate}&base_time=0500&nx=#{@regionNx}&ny=#{@regionNy}&pageNo=1&numOfRows=50&ServiceKey=")+key
   response_weather = RestClient.get(weather_url)
   #@weather_info = Nokogiri::XML(response_weather)
   @weather_info = Nokogiri::Slop <<-EOXML
-    #{response_weather}
+      response_weather
   EOXML
   # puts @weather_info.response.body.items
   arr = @weather_info.response.body.items.item #array 선언 후 하나씩 검색
@@ -64,15 +50,14 @@
       @Sky << i.fcstTime.content + "시의 하늘은 " + cloud
     end
   end
-end
 %>
 
 <div class = "container">
-<h3 class="weatherHead">오늘의 날씨</h3>
-<span class="weatherSpan"><font size="6"><%=@keyword%></font></span>
-<br /><br />
-<span class="weatherCondition"><font size="5"><%=@Water%></font></span>
-<br />
-<span class="weatherCondition"><font size="5"><%=@Sky%></font></span>
-<br />
+  <h3 class="weatherHead"> 오늘의 날씨</h3>
+  <span class="weatherSpan"><font size="6"><%=@keyword%></font></span>
+  <br /><br />
+  <span class="weatherCondition"><font size="5"><%=@Water%></font></span>
+  <br />
+  <span class="weatherCondition"><font size="5"><%=@Sky%></font></span>
+  <br />
 </div>
