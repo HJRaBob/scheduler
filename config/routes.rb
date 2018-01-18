@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/service/:id/allocate' => 'service#allocate'
   post '/service/main' => 'service#main'
   get '/service/main' => 'service#main'
-
+  delete '/destroy/:id' => 'posts#destroy'
 
 
   devise_for :users

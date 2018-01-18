@@ -1,7 +1,8 @@
 <p><%= current_user.email %>의 페이지</p>
 <a href="/users/sign_out" data-method = "delete">로그아웃</a>
 <a href="/service/<%=current_user.id%>/setting">설정</a>
-<div class="gridster">        <% y=1%>
+
+<div class="gridster">
 
     <ul>
     </ul>
@@ -10,6 +11,14 @@
 <button class = "status"> 배치 저장 </button>
 
 <script>
+function myFunction(a) {
+  var x = document.getElementById(a);
+  if (x.style.display === "none") {
+      x.style.display = "block";
+  } else {
+      x.style.display = "none";
+  }
+}
 $(function(){ //DOM Ready
     var gridster;
     var position;
@@ -33,14 +42,13 @@ $(function(){ //DOM Ready
         <% elsif service.id_service == 5 %>
             gridster.add_widget('<li class="new">  <%="#{render 'service/wise'}".gsub(/\n/,"").html_safe%> </li>',1, 1,<%=service.position_x%>,<%=service.position_y%>);
         <% end %>
-
           <% if service.sequence>@user.service_number-1 %>
             <% if @posts.count/4 == 0 %>
-              gridster.add_widget('<li class="new"><%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%><%@posts.each do |p|%><div class="form-check"><input class="form-check-input" type="checkbox" ><label class="form-check-label"><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label></div><%end%> </li>',1, 1,<%=service.position_x%>,<%=service.position_y%>);
+              gridster.add_widget('<li class="new"><%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%><%@posts.each do |p|%><div  id= <%=p.id.to_s %> class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id=<%="customCheck"+p.id.to_s%> /> <label class="custom-control-label" for=<%="customCheck"+p.id.to_s%>><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label>     <a href="/destroy/<%=p.id%>" class=" w-25 h-25 btn btn-outline-danger btn-sm" data-confirm="Are you sure?<%=p.id%>" data-method="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span><strong>Del</strong></span></a><button class="w-20 h-25 btn btn-outline-primary btn-sm "onclick="myFunction(<%=p.id%>)">Done</button></div><%end%> </li>',1, 1,<%=service.position_x%>,<%=service.position_y%>);
             <% elsif @posts.count/4 < 5 %>
-              gridster.add_widget('<li class="new"><%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%><%@posts.each do |p|%><div class="form-check"><input class="form-check-input" type="checkbox" ><label class="form-check-label"><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label></div><%end%> </li>',1, 2,<%=service.position_x%>,<%=service.position_y%>);
+              gridster.add_widget('<li class="new"><%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%><%@posts.each do |p|%><div  id= <%=p.id.to_s %> class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id=<%="customCheck"+p.id.to_s%> /> <label class="custom-control-label" for=<%="customCheck"+p.id.to_s%>><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label>     <a href="/destroy/<%=p.id%>" class=" w-25 h-25 btn btn-outline-danger btn-sm" data-confirm="Are you sure?<%=p.id%>" data-method="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span><strong>Del</strong></span></a><button class="w-20 h-25 btn btn-outline-primary btn-sm "onclick="myFunction(<%=p.id%>)">Done</button></div><%end%> </li>',1, 2,<%=service.position_x%>,<%=service.position_y%>);
             <% else%>
-              gridster.add_widget('<li class="new"><%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%><%@posts.each do |p|%><div class="form-check"><input class="form-check-input" type="checkbox" ><label class="form-check-label"><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label></div><%end%> </li>',1, 3,<%=service.position_x%>,<%=service.position_y%>);
+              gridster.add_widget('<li class="new"><%="#{render '/posts/new'}".gsub(/\n/,"").html_safe%><%@posts.each do |p|%><div  id= <%=p.id.to_s %> class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id=<%="customCheck"+p.id.to_s%> /> <label class="custom-control-label" for=<%="customCheck"+p.id.to_s%>><b>할 일: </b><%=p.title%><b>내용: </b><%=p.content%></label>     <a href="/destroy/<%=p.id%>" class=" w-25 h-25 btn btn-outline-danger btn-sm" data-confirm="Are you sure?<%=p.id%>" data-method="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span><strong>Del</strong></span></a><button class="w-20 h-25 btn btn-outline-primary btn-sm "onclick="myFunction(<%=p.id%>)">Done</button></div><%end%> </li>',1, 3,<%=service.position_x%>,<%=service.position_y%>);
             <%end%>
             <% break %>
         <% end %>
