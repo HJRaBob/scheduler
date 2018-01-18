@@ -16,6 +16,7 @@ weather_return<< "#{i*3}"+"시 - "+ weather[i]
 end
 %>
 
+<div class = "container">
 <hr />
 <h3 class="jg"><%=location%><br /> 날씨</h3>
 <% for i in (0..7)%>
@@ -23,3 +24,4 @@ end
     <%end%>
 
 <hr />
+</div>

@@ -1,3 +1,4 @@
+<div class = "container">
 <h3 class="jg" > <font>음악 순위</font></h3>
 
 <%
@@ -51,9 +52,10 @@
         mu3 << music3.css('td.number').text.strip[0]+ "위: " + music3.css('td.info a.title.ellipsis').text.strip + "  - " + music3.css('td.info a.artist.ellipsis').text.strip
         mi3 << music3.css('a.cover img').attribute('src').to_s
       end%>
-        <h4 class="jg">Genie</h4>><hr />
+        <h4 class="jg">Genie</h4><hr />
         <%for i in (0..2)%>
           <%=mu3[i]%>
           <img src="<%=mi3[i]%>" height="50" width="50"><hr />
-        <%end%>>
+        <%end%>
     <%end%>
+</div>
