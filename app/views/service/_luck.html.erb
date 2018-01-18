@@ -26,7 +26,8 @@ p luck[t][y.to_s]
 end
 
 %>
-<body>
+
+<div class = "container">
   <sapn class="jh"><%=t%></sapn>
  <img src="<%=luck[t][:url]%>" height="50" width="50">
  <br />
@@ -35,5 +36,4 @@ end
  </p>
  <h6><b  class="hn"><%=y%> 년생</b></h6><font size="2" class="hn">
  <%=luck[t][y.to_s]%></font>
-
- </body>
+</div>
