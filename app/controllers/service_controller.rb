@@ -18,7 +18,8 @@ class ServiceController < ApplicationController
             :location => params[:location],
             :service_number => params[:service_number],
             :music_site => params[:music_site],
-            :fortune_year => params[:fortune_year]
+            :fortune_year => params[:fortune_year],
+            :stock_event => params[:stock_event]
         )
 
         services = Service.where(:user_id => current_user.id).order("sequence ASC")

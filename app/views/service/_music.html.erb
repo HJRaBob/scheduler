@@ -1,5 +1,5 @@
 <div class = "container">
-<h3 class="jg" > <font>음악 순위</font></h3>
+<h3 class="jg" > 음악 순위</h3>
 
 <%
   site=@user.music_site
@@ -17,12 +17,13 @@
         mi << music.css('div.wrap a.image_typeAll img').attribute('src').to_s
     end
     %>
-      <h4 class="jg">Melon</h4><hr />
+      <h4 class="jg">Melon</font></h4><hr />
+      <div class="hn">
       <%for i in (0..2)%>
         <%=mu[i]%>
         <img class="mr-3" src="<%=mi[i]%>"height="50" width="50"><br/>
       <%end%><hr />
-
+    </div>
   <%
     elsif site=="Bugs"
     #bugs
@@ -36,10 +37,11 @@
         mi2 << music2.css('a.thumbnail img').attribute('src').to_s
       end%>
       <h4 class="jg">Benie</h4><hr />
+      <div class="hn">
       <%for i in (0..2)%>
         <%=mu2[i]%>
         <img src="<%=mi2[i]%>"height="50" width="50"><hr />
-      <%end%>
+      <%end%></div>
 
   <% elsif site=="Genie"
     #genie
@@ -53,9 +55,11 @@
         mi3 << music3.css('a.cover img').attribute('src').to_s
       end%>
         <h4 class="jg">Genie</h4><hr />
+        <div class="hn">
         <%for i in (0..2)%>
           <%=mu3[i]%>
           <img src="<%=mi3[i]%>" height="50" width="50"><hr />
         <%end%>
+      </div>
     <%end%>
 </div>

@@ -38,7 +38,7 @@ $(function(){ //DOM Ready
         <% elsif service.id_service == 2 %>
             gridster.add_widget('<li class="new">  <%="#{render 'service/music'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 3 %>
-            gridster.add_widget('<li class="new">  <%="#{'주식'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
+            gridster.add_widget('<li class="new">  <%="#{render 'service/stockInfo'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>, <%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 4 %>
             gridster.add_widget('<li class="new">  <%="#{render 'service/luck'}".gsub(/\n/,"").html_safe%> </li>',<%=service.size_x%>,<%=service.size_y%>,<%=service.position_x%>,<%=service.position_y%>);
         <% elsif service.id_service == 5 %>

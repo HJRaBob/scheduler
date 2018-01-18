@@ -1,59 +1,65 @@
 <%
 # [1] 주식종목코드 가져오는 첫번째 방법 - csv에서 호출 > db 생성 및 저장 > 다음증권 크롤링
-  # csv에서 db생성 - 한번만
-              # filename = Rails.root.join('stocks.csv')
-              # CSV.foreach(filename) do |row|
-              #    puts row[0]
-              #    puts row[1]
-              #    @stockname = row[0]
-              #    @stockcode = row[1].to_i
-              #    Stock.create(name: @stockname, code: @stockcode) #단수로
-              #    # use row here...
-              # end
+
 
     # @keyword = params[:keyword]
-
+    @keyword=current_user.stock_event
     # db에서 종목코드탐색
-    # @result = Stock.find_by("name LIKE ?", "%#{@keyword}%")
-    #   puts @result.inspect
-    # @Code = @result.code
-    #   puts @Code
+    @result = Stock.find_by("name LIKE ?", "%#{@keyword}%")
+      puts @result.inspect
+    @stockcode = @result.code.to_s
+      puts @stockcode
 
 # [2] 주식종목코드 가져오는 두번째 방법 - 한국예탁결제원 주식종목코드API > 다음증권 크롤링
     #주식종목코드API 사용시
-    @keyword = params[:keyword]
-    key = "rpPNq6qHiRzGIWy5TseuMtDGujDtmv2mkajUVifmHD0Sp%2Bo54J8uyJUzbC1t83MJUVC22Q8SSASrDGUdRIcN4w%3D%3D"
-    stock_api = URI.encode("http://api.seibro.or.kr/openapi/service/StockSvc/getStkIsinByNmN1?secnNm=#{@keyword}&pageNo=1&numOfRows=5&ServiceKey=")+key
-    response_stock = RestClient.get(stock_api)
-    stockInfo = Nokogiri::XML(response_stock)
-    # @stockcode = stockInfo.css()
-    @doc1 = Array.new()
-    @doc1 = stockInfo.xpath("//item")
-    puts @keyword
-    cnt=-1
-    # puts arr[0].("//korSecnNm")
-    @doc1.xpath("//korSecnNm").each do |i|
-      cnt+=1
-      if i.inner_text == @keyword
-        @stockcode = @doc1.xpath("//shotnIsin")[cnt].inner_text
-        puts @stockcode
-      end
-    end
-    if cnt==-1
-      @stockcode = "해당하는 종목이 없습니다."
-      puts "해당하는 종목이 없습니다."
-    end
+    # @keyword="삼성전자"
+    # @keyword = params[:keyword]
+    # key = "rpPNq6qHiRzGIWy5TseuMtDGujDtmv2mkajUVifmHD0Sp%2Bo54J8uyJUzbC1t83MJUVC22Q8SSASrDGUdRIcN4w%3D%3D"
+    # stock_api = URI.encode("http://api.seibro.or.kr/openapi/service/StockSvc/getStkIsinByNmN1?secnNm=#{@keyword}&pageNo=1&numOfRows=5&ServiceKey=")+key
+    # response_stock = RestClient.get(stock_api)
+    # stockInfo = Nokogiri::XML(response_stock)
+    # # @stockcode = stockInfo.css()
+    # @doc1 = Array.new()
+    # @doc1 = stockInfo.xpath("//item")
+    # puts @keyword
+    # cnt=-1
+    # # puts arr[0].("//korSecnNm")
+    # @doc1.xpath("//korSecnNm").each do |i|
+    #   cnt+=1
+    #   if i.inner_text == @keyword
+    #     @stockcode = @doc1.xpath("//shotnIsin")[cnt].inner_text
+    #     puts @stockcode
+    #   end
+    # end
+    # if cnt==-1
+    #   @stockcode = "해당하는 종목이 없습니다."
+    #   puts "해당하는 종목이 없습니다."
+    # end
 
     #4.주가정보 획득
     #크롤러 사용 - 다음 주식정보
-    stock_url = URI.encode("http://finance.daum.net/item/news.daum?code=" + @stockcode.to_s)
+    if @stockcode.length ==5
+      @stockcode="0"+@stockcode
+    elsif @stockcode.length ==4
+      @stockcode="00"+@stockcode
+    elsif @stockcode.length ==3
+      @stockcode="000"+@stockcode
+    elsif @stockcode.length ==2
+      @stockcode="0000"+@stockcode
+    elsif @stockcode.length ==1
+      @stockcode="00000"+@stockcode
+    end
+      stock_url = URI.encode("http://finance.daum.net/item/news.daum?code=#{@stockcode}")
+
+    p "=============="
+    puts stock_url
     @response = RestClient.get(stock_url)
     doc= Nokogiri::HTML(@response)
     @cost = doc.css("em.curPrice").text
     puts @cost
 %>
     <div class = "container">
-      <h3 class="jg"><%=@keyword%>의 주가</h3><br />
-      <span class="hn"><font size="3"><%=@stockcode%></font></span><br />
+      <h3 class="jg"><%=@keyword%> 주가</h3>
+      <span class="hn"><font size="3"><%=@stockcode%></font></span><br /><br />
       <span class="hn"><font size="6"><%=@cost%></font></span><br />
     </div>
