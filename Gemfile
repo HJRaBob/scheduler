@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'httparty'
 #devise
 gem 'devise'
 #gridster
