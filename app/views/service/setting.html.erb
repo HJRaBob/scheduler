@@ -10,7 +10,7 @@
     <br>
     <% 8.times do |i| %>
         <label><%= i+1 %>번 위젯: </label>
-        <select name = "widget_<%=i+1%>">
+        <select name = "widget_<%=i+1%>" class = "custom-select mr-sm-2">
             <option value=<%=0%> <%= 'selected' if @service[i].id_service == 0 %>>날씨</option>
             <option value=<%=1%> <%= 'selected' if @service[i].id_service == 1 %>>영화</option>
             <option value=<%=2%> <%= 'selected' if @service[i].id_service == 2 %>>음악</option>
@@ -25,7 +25,7 @@
     <h5>가로 크기</h5>
     <% 8.times do |i| %>
         <label><%= i+1 %>번 위젯: </label>
-        <select name = "sizex_<%=i+1%>">
+        <select name = "sizex_<%=i+1%>" class = "custom-select mr-sm-2">
             <option value=<%=1%> <%= 'selected' if @service[i].size_x == 1 %>>1</option>
             <option value=<%=2%> <%= 'selected' if @service[i].size_x == 2 %>>2</option>
             <option value=<%=3%> <%= 'selected' if @service[i].size_x == 3 %>>3</option>
@@ -36,7 +36,7 @@
     <h5>세로 크기</h5>
     <% 8.times do |i| %>
         <label><%= i+1 %>번 위젯: </label>
-        <select name = "sizey_<%=i+1%>">
+        <select name = "sizey_<%=i+1%>" class = "custom-select mr-sm-2">
             <option value=<%=1%> <%= 'selected' if @service[i].size_y == 1 %>>1</option>
             <option value=<%=2%> <%= 'selected' if @service[i].size_y == 2 %>>2</option>
             <option value=<%=3%> <%= 'selected' if @service[i].size_y == 3 %>>3</option>
@@ -46,11 +46,11 @@
 
     <hr>
     <h3>날씨 정보</h3>
-        <label>지역 : </label><input type="text" name="location" value=<%=@user.location%>> <br>
+        <label>지역 : </label><input type="text" name="location" value=<%=@user.location%> class = "setting_title"> <br>
     <hr>
     <h3>음악 정보</h3>
     <label>음원 사이트</label>
-    <select name = "music_site">
+    <select name = "music_site" class = "custom-select mr-sm-2">
         <option value="Melon" <%= 'selected' if "Melon" == @user.music_site %>>Melon</option>
         <option value="Bugs" <%= 'selected' if "Bugs" == @user.music_site %>>Bugs</option>
         <option value="Genie" <%= 'selected' if "Genie" == @user.music_site %>>Genie</option>
@@ -58,18 +58,18 @@
 
     <hr>
     <h3>주식 정보</h3>
-    <label>종목 설정</label>
-    <input type="text" name="stock_event" value = <%= @user.stock_event %>>
+    <label>종목 설정 :</label>
+    <input type="text" name="stock_event" value = <%= @user.stock_event %> class = "setting_title">
 
     <hr>
     <h3>운세 정보</h3>
     <label>생년: </label>
-    <select name = "fortune_year">
+    <select name = "fortune_year" class = "custom-select mr-sm-2">
     <% 1900.upto(2018) do |i| %>
         <option value=<%=i%> <%= 'selected' if i == @user.fortune_year %>><%= i %></option>
     <% end %>
 
     <input type="hidden" name="authenticity_token" value= "<%=form_authenticity_token%>">
     <hr>
-    <input type="submit" value="제출">
+    <input type="submit" class = "btn btn-outline-secondary" value="제출">
 </form>
