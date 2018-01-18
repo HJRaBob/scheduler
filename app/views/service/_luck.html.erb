@@ -26,10 +26,14 @@ p luck[t][y.to_s]
 end
 
 %>
-<%=t%>
-
+<body>
+  <sapn class="jh"><%=t%></sapn>
  <img src="<%=luck[t][:url]%>" height="50" width="50">
  <br />
- <%=luck[t][:today]%><br />
- <h5><b><%=y%> 년생</b><font size="2"> 운세
- <%=luck[t][y.to_s]%></font></h5>
+ <p class="hn">
+   <%=luck[t][:today]%>
+ </p>
+ <h6><b  class="hn"><%=y%> 년생</b></h6><font size="2" class="hn">
+ <%=luck[t][y.to_s]%></font>
+
+ </body>

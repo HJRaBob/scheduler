@@ -1,4 +1,4 @@
-<h1>Movie</h1>
+<h3 class="jg">Movie</h3>
 <%
 url = "http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve"
 movie_html = RestClient.get(url)
@@ -23,6 +23,6 @@ end
 %>
 
 <%for i in (0..2)%>
-<img src="<%=img_url[i]%>" height="100" width="70">
-  <%=mrank[i]%><br /><hr />
+<img src="<%=img_url[i]%>" height="100" width="70"><br />
+<span class="hn">  <%=mrank[i]%></span><br /><hr />
   <%end%>

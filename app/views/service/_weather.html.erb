@@ -15,11 +15,10 @@ weather_return<< "#{i*3}"+"시 - "+ weather[i]
 # weather_return[i] = "#{i*3}"+"시 - "+ weather[i]
 end
 %>
-
 <hr />
-<h3><%=location%> 날씨</h3>
+<h3 class="jg"><%=location%><br /> 날씨</h3>
 <% for i in (0..7)%>
-      <%=weather_return[i]%><br />
+<span class="hn">     <%=weather_return[i]%></span><br />
     <%end%>
 
-    <hr />
+<hr />
