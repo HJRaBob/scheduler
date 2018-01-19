@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
       self.location ||= "서울시"
       self.service_number ||= 8
       self.music_site ||= "Melon"
-      self.stock_event ||= "kospi"
+      self.stock_event ||= "삼성전자"
       self.fortune_year ||= 1989
   end
   
